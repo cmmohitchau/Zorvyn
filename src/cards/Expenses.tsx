@@ -1,0 +1,45 @@
+
+
+
+type expenseType = {
+    expense : number;
+    earned : number;
+    income : number;
+}
+export const Expenses = ({expense , earned , income} : expenseType) => {
+    let progress : number = (expense / income);
+    const totalBars = 30;
+
+    return (
+        <div className="min-w-sm max-w-md border py-3 px-6 border-gray-300 rounded-2xl bg-gray-50  overflow-hidden">
+
+
+            <div className="flex flex-col gap-2">
+                <div className="flex flex-col w-full gap-1 mt-8">
+                    <h1 className="text-4xl font-semibold">Rs. {expense.toFixed(2).toString()}</h1>
+
+                    <span className="text-gray-400">Total expense</span>
+                    <span className="px-2 py-1 text-sm bg-gray-200 rounded-4xl max-w-1/2">Earned <span className="text-green-400">+{earned.toString()}</span></span>
+                </div>
+                <div className="flex gap-1 my-4">
+                    {[...Array(totalBars)].map((_, i) => {
+                        const filled = i < totalBars * progress;
+                        return (
+                        <div
+                            key={i}
+                            className={`w-2 h-10 rounded-full ${
+                            filled ? "bg-lime-400" : "bg-lime-100"
+                            }`}
+                        />
+                        );
+                    })}
+                </div>
+            </div>
+            <div className="flex justify-between">
+                <span>All time</span>
+                <span>With a goal of 75%</span>
+            </div>
+        
+        </div>
+    )
+}
