@@ -11,7 +11,7 @@ type IncomeType = {
 export const Income = ({time , income , earned , salary , Business , Investment} : IncomeType) => {
     return (
             
-        <div className="min-w-sm max-w-md border py-3 px-6 border-gray-300 rounded-2xl bg-gray-50  overflow-hidden">
+        <div className="max-w-md border py-3 px-6 border-gray-300 rounded-2xl bg-gray-50  overflow-hidden">
 
             <div className="flex justify-between">
                 <span>My Income</span>

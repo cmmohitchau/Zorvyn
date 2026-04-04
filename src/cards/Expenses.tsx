@@ -11,7 +11,7 @@ export const Expenses = ({expense , earned , income} : expenseType) => {
     const totalBars = 30;
 
     return (
-        <div className="min-w-sm max-w-md border py-3 px-6 border-gray-300 rounded-2xl bg-gray-50  overflow-hidden">
+        <div className="max-w-md border py-3 px-6 border-gray-300 rounded-2xl bg-gray-50  overflow-hidden">
 
 
             <div className="flex flex-col gap-2">
