@@ -15,15 +15,6 @@ import { SidebarInset, SidebarProvider } from "../components/ui/sidebar"
 export const Dashboard = () => {
 
     return(
-    <SidebarProvider >
-      <AppSidebar />
-      <SidebarInset >
-      <div className="sticky top-0 z-10 bg-gray-100 shrink-0 h-16 items-center ">
-        <Header />
-      </div>
-      
-      
-      <div className="flex-1 flex flex-col overflow-hidden">
 
         <main className="overflow-y-auto p-6">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
@@ -46,9 +37,5 @@ export const Dashboard = () => {
           </div>
 
         </main>
-        
-      </div>
-      </SidebarInset>
-    </ SidebarProvider >
     )
 }

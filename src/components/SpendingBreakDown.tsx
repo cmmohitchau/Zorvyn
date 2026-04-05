@@ -18,7 +18,7 @@ const SPENDING: SpendingItem[] = [
 
 export const SpendingBreakDown = () => {
     return(
-              <div className="max-w-lg">
+              <div className="min-w-lg">
                 <div style={styles.breakdown}>
                   <div style={styles.sectionLabel}>Spending breakdown</div>
                   {SPENDING.map((item) => (

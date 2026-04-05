@@ -5,6 +5,7 @@ import { Analytics } from "./Page/Analytics";
 import { Card } from "./Page/Card";
 import { ManageTransaction } from "./Page/ManageTransaction";
 import { Transactions } from "./Page/Transactions";
+import { Layout } from "./Layout";
 
 function App() {
 
@@ -13,11 +14,13 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/manage" element={<ManageTransaction />} />
-        <Route path="/card" element={<Card />} />
-        <Route path="/transaction" element={<Transactions />} />
+        <Route element={<Layout />} >
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/manage" element={<ManageTransaction />} />
+          <Route path="/card" element={<Card />} />
+          <Route path="/transaction" element={<Transactions />} />
+        </Route>
       </Routes>
     </BrowserRouter>
 

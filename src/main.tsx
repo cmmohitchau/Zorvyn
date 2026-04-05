@@ -12,6 +12,7 @@ createRoot(document.getElementById('root')!).render(
   <TooltipProvider>
     
     <App />
+    
   </TooltipProvider>
   </Provider>,
 )

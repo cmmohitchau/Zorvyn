@@ -12,20 +12,23 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useState } from "react";
 import { Avatar , AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
+import { setRole } from "./redux/slices/roleSlice";
+import type { RootState } from "./redux/store/store";
 
 interface ProfileProps {
   username : String;
   email : String;
 }
 
-type Role = "admin" | "viewer";
 
 export function Profile({username , email} : ProfileProps) {
 
-  const [role , setRole] = useState<Role>("viewer");
-
+  const dispatch = useAppDispatch();
+  
+  // const role = useAppSelector((s : RootState) => s.roles.role);
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -67,8 +70,8 @@ export function Profile({username , email} : ProfileProps) {
             <DropdownMenuSubTrigger>Role</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem onClick={() => setRole("admin")}>Admin</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setRole("viewer")}>Viewer</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => dispatch(setRole("admin"))}>Admin</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => dispatch(setRole("viewer"))}>Viewer</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>

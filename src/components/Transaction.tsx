@@ -20,6 +20,7 @@ const SortIcon = () => (
 
 export const Transaction = () => {
 
+
     const dispatch     = useAppDispatch();
     const transactions = useAppSelector(selectSortedTransactions);
 
@@ -80,7 +81,7 @@ export const Transaction = () => {
                     <p className="text-center text-sm text-gray-400 py-8">No transactions found.</p>
                 )}
                 {transactions.map((t, i) => (
-                    <div key={t.id ?? i} className="grid grid-cols-5 px-5 py-3 text-sm items-center hover:bg-gray-50 transition">
+                    <div  key={t.id ?? i} className="grid grid-cols-5 px-5 py-3 text-sm items-center hover:bg-gray-50 transition">
                         <span className="font-medium text-gray-800">{t.category}</span>
                         <span className="text-gray-500">{t.date}</span>
                         <span className="text-gray-500">{t.title}</span>
