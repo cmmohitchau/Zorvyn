@@ -1,4 +1,9 @@
-
+import { useAppDispatch, useAppSelector } from "@/components/redux/store/hooks";
+import type { RootState } from "@/components/redux/store/store";
+import { DropDown } from "@/components/ui-comonents/DropDown";
+import { MONTHS } from "./Income";
+import type { MonthsFull } from "@/components/redux/slices/transactionsSlice";
+import { setMonthType } from "@/components/redux/slices/transactionsSlice"
 
 
 type expenseType = {
@@ -7,13 +12,25 @@ type expenseType = {
     income : number;
 }
 export const Expenses = ({expense , earned , income} : expenseType) => {
+    const dispatch = useAppDispatch();
+    
+    const option    = useAppSelector((s: RootState) => s.transactions.selectedMonth);
     let progress : number = (expense / income);
     const totalBars = 30;
 
     return (
         <div className="max-w-md border py-3 px-6 border-gray-300 rounded-2xl bg-gray-50  overflow-hidden">
 
-
+            <div className="flex justify-between">
+                
+                <span>With a goal of 75%</span>
+                <DropDown
+                    title="All Time"
+                    Option={option}
+                    seTOption={(val) => dispatch(setMonthType(val as MonthsFull))}
+                    options={MONTHS}
+                />
+            </div>
             <div className="flex flex-col gap-2">
                 <div className="flex flex-col w-full gap-1 mt-8">
                     <h1 className="text-4xl font-semibold">Rs. {expense.toFixed(2).toString()}</h1>
@@ -35,10 +52,7 @@ export const Expenses = ({expense , earned , income} : expenseType) => {
                     })}
                 </div>
             </div>
-            <div className="flex justify-between">
-                <span>All time</span>
-                <span>With a goal of 75%</span>
-            </div>
+            
         
         </div>
     )

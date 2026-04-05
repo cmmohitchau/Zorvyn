@@ -4,23 +4,23 @@ interface DropDownProps {
   title: string;
   options: string[];
   seTOption : (value : string) => void;
-  Option : string;
+  Option : string | null;
 }
 
-export const DropDown = ({ title , options , seTOption , Option}: DropDownProps) => {
+export const DropDown = ({ options , seTOption , Option}: DropDownProps) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    seTOption(title);
-    const handleClickOutside = (e: MouseEvent) => {
-      if (!dropdownRef.current?.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
+      // remove seTOption(title) from here entirely
+      const handleClickOutside = (e: MouseEvent) => {
+          if (!dropdownRef.current?.contains(e.target as Node)) {
+              setOpen(false);
+          }
+      };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -47,8 +47,8 @@ export const DropDown = ({ title , options , seTOption , Option}: DropDownProps)
       </button>
 
       {open && (
-        <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-200 shadow-lg ring-1 ring-white/10">
-          <div className="py-1">
+        <div className="absolute right-0 z-10 mt-2 top-full w-56 max-h-60 overflow-y-auto scroll-smooth rounded-md bg-gray-200 shadow-lg ring-1 ring-white/10">
+          <div className="py-1 pb-6">
             {options.map((option, i) => (
               <button
                 key={i}
