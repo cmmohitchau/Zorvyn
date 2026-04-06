@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
 import type { Transaction } from "@/Types/TransactionType";
-import { MONTHS } from "@/cards/Income";
+import { MONTHS } from "../slices/transactionsSlice";
 
 export const MONTH_MAP : Record<string,number> = {
     Jan: 0,
