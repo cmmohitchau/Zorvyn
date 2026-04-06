@@ -5,7 +5,7 @@ import { SidebarTrigger } from "./ui/sidebar";
 
 export const Header = () => {
 
-    const { theme , toggleTheme } = useTheme();
+    const { toggleTheme } = useTheme();
     
     return(
         <div className="bg-white dark:bg-zinc-900 text-black dark:text-white flex justify-between w-full">

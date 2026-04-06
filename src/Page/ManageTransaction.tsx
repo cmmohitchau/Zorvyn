@@ -1,11 +1,12 @@
 import { Transaction } from "@/components/Transaction"
 import { DropDown } from "@/components/ui-comonents/DropDown"
 import { useAppDispatch, useAppSelector } from "@/redux/store/hooks"
-import { setRole, type Role } from "@/redux/slices/roleSlice"
+import { setRole } from "@/redux/slices/roleSlice"
 import type { RootState } from "@/redux/store/store"
 import { useState } from "react"
 import type { TransactionType } from "@/Types/TransactionType"
 import { addTransaction } from "@/redux/slices/transactionsSlice"
+import type { RoleType } from "@/Types/roleType"
 
 export const Roles = [ "admin" , "viewer"]
 export const ManageTransaction = () => {
@@ -65,7 +66,7 @@ export const ManageTransaction = () => {
                     <DropDown
                         title="All Time"
                         Option={option}
-                        seTOption={(val) => dispatch(setRole(val as Role))}
+                        seTOption={(val) => dispatch(setRole(val as RoleType))}
                         options={Roles}
                     /> 
                 
