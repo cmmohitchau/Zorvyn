@@ -5,8 +5,8 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { useAppSelector } from "./redux/store/hooks";
-import { selectMoneyFlow } from "./redux/store/selectors";
+import { useAppSelector } from "../redux/store/hooks";
+import { selectMoneyFlow } from "../redux/store/selectors";
 
 export type TrendTooltipProps = {
   active?: boolean;
@@ -182,18 +182,18 @@ const styles: Record<string, CSSProperties> = {
   legend:        { display: "flex", gap: 14 },
   legendItem:    { display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#6a7d6a" },
   legendDot:     { width: 9, height: 9, borderRadius: "50%", display: "inline-block" },
-  tooltip:       { borderRadius: 12, padding: "10px 14px", color: "#fff", fontSize: 13, boxShadow: "0 8px 24px rgba(0,0,0,0.2)" },
+  tooltip:       { background: "#162c1e", borderRadius: 12, padding: "10px 14px", color: "#fff", fontSize: 13, boxShadow: "0 8px 24px rgba(0,0,0,0.2)" },
   tooltipLabel:  { fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 2 },
   tooltipValue:  { fontSize: 18, fontWeight: 500 },
   row2:          { display: "grid", gridTemplateColumns: "1.6fr 1fr", gap: 12 },
-  breakdown:     { borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0" },
+  breakdown:     { background: "#fff", borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0" },
   brow:          { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 0", borderBottom: "0.5px solid #f0f5f0" },
   bcat:          { display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#162416" },
   bdot:          { width: 8, height: 8, borderRadius: "50%", display: "inline-block" },
   bamt:          { fontSize: 13, fontWeight: 500, color: "#162416", textAlign: "right" },
-  barOuter:      { height: 4, borderRadius: 4, marginTop: 3, width: 80 },
+  barOuter:      { height: 4, background: "#f0f5f0", borderRadius: 4, marginTop: 3, width: 80 },
   barInner:      { height: 4, borderRadius: 4 },
-  donutCard:     { borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0" },
+  donutCard:     { background: "#fff", borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0" },
   dleg:          { marginTop: 4 },
   dlegRow:       { display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 12, padding: "3px 0" },
   dlegLeft:      { display: "flex", alignItems: "center", gap: 6, color: "#6a7d6a" },

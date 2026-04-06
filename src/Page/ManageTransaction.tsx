@@ -1,11 +1,11 @@
 import { Transaction } from "@/components/Transaction"
 import { DropDown } from "@/components/ui-comonents/DropDown"
-import { useAppDispatch, useAppSelector } from "@/components/redux/store/hooks"
-import { setRole, type Role } from "@/components/redux/slices/roleSlice"
-import type { RootState } from "@/components/redux/store/store"
+import { useAppDispatch, useAppSelector } from "@/redux/store/hooks"
+import { setRole, type Role } from "@/redux/slices/roleSlice"
+import type { RootState } from "@/redux/store/store"
 import { useState } from "react"
 import type { TransactionType } from "@/Types/TransactionType"
-import { addTransaction } from "@/components/redux/slices/transactionsSlice"
+import { addTransaction } from "@/redux/slices/transactionsSlice"
 
 export const Roles = [ "admin" , "viewer"]
 export const ManageTransaction = () => {

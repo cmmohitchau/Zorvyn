@@ -31,5 +31,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/components/redux/slices/.ts"]
+  "include": ["src", "src/redux/slices/.ts"]
 }

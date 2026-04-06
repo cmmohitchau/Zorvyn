@@ -1,7 +1,7 @@
 import {type CSSProperties } from "react";
 import { fmt } from "./MoneyFlow";
-import { useAppSelector } from "./redux/store/hooks";
-import { selectSpendBreakdown } from "./redux/store/selectors";
+import { useAppSelector } from "../redux/store/hooks";
+import { selectSpendBreakdown } from "../redux/store/selectors";
 
 
 
@@ -11,13 +11,13 @@ export const SpendingBreakDown = () => {
   
 
     return(
-              <div className="min-w-lg bg-white">
-                <div style={styles.breakdown}>
-                  <div style={styles.sectionLabel}>Spending breakdown</div>
+              <div className="">
+                <div className="border-gray-600 bg-white dark:bg-zinc-900 text-black dark:text-white" style={styles.breakdown}>
+                  <div  style={styles.sectionLabel}>Spending breakdown</div>
                   {spending.map((item) => (
-                    <div key={item.category} style={styles.brow}>
-                      <div style={styles.bcat}>
-                        <span style={{ ...styles.bdot, background: item.color }} />
+                    <div className=" dark:text-white" key={item.category} style={styles.brow}>
+                      <div className=" dark:text-white" style={styles.bcat}>
+                        <span className="dark:bg-zinc-900 dark:text-white" style={{ ...styles.bdot, background: item.color }} />
                         {item.category}
                       </div>
                       <div style={{ textAlign: "right" }}>
@@ -40,15 +40,15 @@ export const SpendingBreakDown = () => {
 const styles: Record<string, CSSProperties> = {
   dash:          { fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif", padding: "1.5rem", background: "#f5faf5", minHeight: "100vh" },
   cardGrid:      { display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12, marginBottom: "1.5rem" },
-  card:          { background: "#fff", borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0" },
+  card:          { borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0" },
   cardLabel:     { fontSize: 12, color: "#8a9e8a", marginBottom: 6 },
   cardValue:     { fontSize: 22, fontWeight: 500, color: "#162416" },
   cardSub:       { display: "flex", alignItems: "center", gap: 6, marginTop: 6 },
   cardSubText:   { fontSize: 12, color: "#8a9e8a" },
   badge:         { display: "inline-flex", alignItems: "center", gap: 3, fontSize: 11, padding: "2px 7px", borderRadius: 6, fontWeight: 500 },
-  badgeUp:       { background: "#EAF3DE", color: "#27500A" },
-  badgeDown:     { background: "#FCEBEB", color: "#791F1F" },
-  section:       { background: "#fff", borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0", marginBottom: 12 },
+  badgeUp:       {  color: "#27500A" },
+  badgeDown:     {  color: "#791F1F" },
+  section:       {  borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0", marginBottom: 12 },
   sectionHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" },
   sectionLabel:  { fontSize: 13, color: "#5a6e5a", fontWeight: 500, marginBottom: "0.5rem" },
   tabs:          { display: "flex", gap: 4 },
@@ -61,9 +61,9 @@ const styles: Record<string, CSSProperties> = {
   tooltipLabel:  { fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 2 },
   tooltipValue:  { fontSize: 18, fontWeight: 500 },
   row2:          { display: "grid", gridTemplateColumns: "1.6fr 1fr", gap: 12 },
-  breakdown:     { background: "#fff", borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0" },
+  breakdown:     { borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0" },
   brow:          { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 0", borderBottom: "0.5px solid #f0f5f0" },
-  bcat:          { display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#162416" },
+  bcat:          { display: "flex", alignItems: "center", gap: 8, fontSize: 13 },
   bdot:          { width: 8, height: 8, borderRadius: "50%", display: "inline-block" },
   bamt:          { fontSize: 13, fontWeight: 500, color: "#162416", textAlign: "right" },
   barOuter:      { height: 4, background: "#f0f5f0", borderRadius: 4, marginTop: 3, width: 80 },

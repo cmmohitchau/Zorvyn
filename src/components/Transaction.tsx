@@ -1,10 +1,10 @@
 
 
 import { DropDown } from "./ui-comonents/DropDown"
-import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
-import { selectRole, selectSortedTransactions } from "./redux/store/selectors";
-import { deleteTransaction, setFilterType, setSortBy, setSortOrder, updateTransaction } from "@/components/redux/slices/transactionsSlice";
-import type { RootState } from "./redux/store/store";
+import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
+import { selectRole, selectSortedTransactions } from "../redux/store/selectors";
+import { deleteTransaction, setFilterType, setSortBy, setSortOrder, updateTransaction } from "@/redux/slices/transactionsSlice";
+import type { RootState } from "../redux/store/store";
 import type { Transaction as TxType } from "@/Types/TransactionType";
 import { useState } from "react";
 
@@ -142,7 +142,7 @@ export const Transaction = () => {
                         className="border px-2 py-1 rounded"
                         />
                     ) : (
-                        <span className="font-medium text-gray-800">{t.category}</span>
+                        <span className="font-medium text-gray-500">{t.category}</span>
                     )}
 
                     

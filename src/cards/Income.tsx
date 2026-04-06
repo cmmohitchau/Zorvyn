@@ -1,7 +1,7 @@
-import { setMonthType, type MonthsFull } from "@/components/redux/slices/transactionsSlice";
-import { useAppDispatch, useAppSelector } from "@/components/redux/store/hooks";
-import { selectSummary } from "@/components/redux/store/selectors";
-import type { RootState } from "@/components/redux/store/store";
+import { setMonthType, type MonthsFull } from "@/redux/slices/transactionsSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/store/hooks";
+import { selectSummary } from "@/redux/store/selectors";
+import type { RootState } from "@/redux/store/store";
 import { DropDown } from "@/components/ui-comonents/DropDown";
 
 type IncomeType = {

@@ -5,8 +5,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { fmt, type TrendTooltipProps } from "./MoneyFlow";
-import { useAppSelector } from "./redux/store/hooks";
-import { selectTrendData } from "./redux/store/selectors";
+import { useAppSelector } from "../redux/store/hooks";
+import { selectTrendData } from "../redux/store/selectors";
 
 type RangeKey = "3M" | "6M" | "1Y";
 
@@ -94,9 +94,9 @@ const styles: Record<string, CSSProperties> = {
   cardSub:       { display: "flex", alignItems: "center", gap: 6, marginTop: 6 },
   cardSubText:   { fontSize: 12, color: "#8a9e8a" },
   badge:         { display: "inline-flex", alignItems: "center", gap: 3, fontSize: 11, padding: "2px 7px", borderRadius: 6, fontWeight: 500 },
-  badgeUp:       { background: "#EAF3DE", color: "#27500A" },
-  badgeDown:     { background: "#FCEBEB", color: "#791F1F" },
-  section:       { background: "#fff", borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0", marginBottom: 12 },
+  badgeUp:       { color: "#27500A" },
+  badgeDown:     {  color: "#791F1F" },
+  section:       {  borderRadius: 12, padding: "1rem 1.25rem", border: "0.5px solid #e0eae0", marginBottom: 12 },
   sectionHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" },
   sectionLabel:  { fontSize: 13, color: "#5a6e5a", fontWeight: 500, marginBottom: "0.5rem" },
   tabs:          { display: "flex", gap: 4 },
