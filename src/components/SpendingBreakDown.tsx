@@ -1,27 +1,20 @@
 import {type CSSProperties } from "react";
 import { fmt } from "./MoneyFlow";
+import { useAppSelector } from "./redux/store/hooks";
+import { selectSpendBreakdown } from "./redux/store/selectors";
 
-interface SpendingItem {
-  category: string;
-  amount: number;
-  color: string;
-  pct: number;
-}
 
-const SPENDING: SpendingItem[] = [
-  { category: "Housing",   amount: 1850, color: "#378ADD", pct: 100 },
-  { category: "Food",      amount: 980,  color: "#639922", pct: 53  },
-  { category: "Transport", amount: 620,  color: "#BA7517", pct: 34  },
-  { category: "Shopping",  amount: 880,  color: "#7F77DD", pct: 48  },
-  { category: "Other",     amount: 880,  color: "#888780", pct: 48  },
-];
 
 export const SpendingBreakDown = () => {
+  const spending = useAppSelector(selectSpendBreakdown);
+
+  
+
     return(
-              <div className="min-w-lg">
+              <div className="min-w-lg bg-white">
                 <div style={styles.breakdown}>
                   <div style={styles.sectionLabel}>Spending breakdown</div>
-                  {SPENDING.map((item) => (
+                  {spending.map((item) => (
                     <div key={item.category} style={styles.brow}>
                       <div style={styles.bcat}>
                         <span style={{ ...styles.bdot, background: item.color }} />

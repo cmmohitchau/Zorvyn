@@ -13,10 +13,11 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import Zorvyn from "@/assets/zorvynlogolight.png";
-import { House , ChartNoAxesCombined , FileChartLine, CreditCard , Bell , Pencil } from 'lucide-react';
+import { House , ChartNoAxesCombined , FileChartLine, CreditCard , Bell } from 'lucide-react';
 import { IconHelp, IconSearch, IconSettings } from "@tabler/icons-react";
 import { NavSecondary } from "./nav-secondary";
 import { NavUser } from "./nav-user";
+import { useLocation } from "react-router-dom";
 
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
@@ -41,13 +42,8 @@ const data = {
           icon : <ChartNoAxesCombined size={18} className="text-muted-foreground" />
         },
         {
-          title: "Edit",
-          url: "/manage",
-          icon : <Pencil size={18} className="text-muted-foreground" />
-        },
-        {
           title : "Transactions",
-          url : "/transaction",
+          url : "/manage",
           icon : <FileChartLine size={18} className="text-muted-foreground" />
         },
         {
@@ -84,6 +80,8 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const location = useLocation();
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -100,7 +98,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton  asChild isActive={item.isActive}>
+                    <SidebarMenuButton  asChild isActive={location.pathname === item.url}>
                       
                       <a className="flex items-center gap-2" href={item.url}>
                         {item.icon}

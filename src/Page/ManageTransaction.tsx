@@ -3,21 +3,15 @@ import { DropDown } from "@/components/ui-comonents/DropDown"
 import { useAppDispatch, useAppSelector } from "@/components/redux/store/hooks"
 import { setRole, type Role } from "@/components/redux/slices/roleSlice"
 import type { RootState } from "@/components/redux/store/store"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import type { TransactionType } from "@/Types/TransactionType"
 import { addTransaction } from "@/components/redux/slices/transactionsSlice"
-import { IconFlagPlus } from "@tabler/icons-react"
 
 export const Roles = [ "admin" , "viewer"]
 export const ManageTransaction = () => {
 
     const dispatch = useAppDispatch()
     const option = useAppSelector( (s : RootState) => s.roles.role)
-    const [error , setError ] = useState<boolean>(false);
-
-    useEffect( () =>{
-        setError(false);
-    }, [option])
 
     const [form, setForm] = useState({
         title: "",
@@ -40,7 +34,7 @@ export const ManageTransaction = () => {
     if (!form.title || !form.amount || !form.category) return;
 
     if(option === "viewer") {
-        setError(true);
+        alert("Only Admin can add the Transactiion")
         return;
     }
 
@@ -57,14 +51,14 @@ export const ManageTransaction = () => {
     setForm({
       title: "",
       amount: "",
-      type: "expense",
+      type: "Expense",
       category: "",
       date: new Date().toISOString().split("T")[0],
     });
   };
 
     return(
-        <div className="">
+        <div className="bg-white dark:bg-zinc-900 text-black dark:text-white">
             <div className="p-2 flex border-b items-center justify-end mr-2">
                 
                    <span className="font-semibold">Select Role</span>
@@ -77,10 +71,10 @@ export const ManageTransaction = () => {
                 
             </div>
 
-            <div className="m-2 bg-white rounded-xl py-4 border min-h-75 border-[#e0eae0] mb-3">
+            <div className="m-2 dark:bg-zinc-900 text-black dark:text-white bg-white rounded-xl py-4 border min-h-75 border-[#e0eae0] mb-3">
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-white p-6 rounded-2xl shadow-md flex flex-col gap-4 max-w-md"
+                    className="dark:bg-zinc-900 text-black dark:text-white bg-white p-6 rounded-2xl shadow-md flex flex-col gap-4 max-w-md"
                     >
                     <h2 className="text-lg font-semibold">Add Transaction</h2>
 
@@ -105,7 +99,7 @@ export const ManageTransaction = () => {
                         name="type"
                         value={form.type}
                         onChange={handleChange}
-                        className="border rounded-lg px-3 py-2"
+                        className="bg-white dark:bg-zinc-900 text-black dark:text-white border rounded-lg px-3 py-2"
                     >
                         <option value="expense">Expense</option>
                         <option value="income">Income</option>
@@ -126,8 +120,6 @@ export const ManageTransaction = () => {
                         onChange={handleChange}
                         className="border rounded-lg px-3 py-2"
                     />
-
-                    {error && <p className="text-xl text-red-500">Only Admin can add the transaction</p>}
 
                     <button
                         type="submit"

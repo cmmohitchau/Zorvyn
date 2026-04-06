@@ -15,8 +15,8 @@ interface props {
 
 export const Sidebar = ({open , setOpen} : props) => {
   const [active, setActive] = useState("Dashboard");
-  console.log("sidebar open : " , open);
-  
+
+    
   return (
     <>
     

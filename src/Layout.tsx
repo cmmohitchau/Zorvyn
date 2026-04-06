@@ -11,7 +11,7 @@ export const Layout = () => {
     <SidebarProvider >
       <AppSidebar />
       <SidebarInset >
-      <div className="sticky top-0 z-10 bg-gray-100 shrink-0 h-16 items-center ">
+      <div className="sticky dark:bg-zinc-900 text-black dark:text-white top-0 z-10 bg-gray-100 shrink-0 h-16 items-center ">
         <Header />
       </div>
       

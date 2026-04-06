@@ -5,38 +5,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { fmt, type TrendTooltipProps } from "./MoneyFlow";
-
-
-interface TrendPoint {
-  month: string;
-  balance: number;
-}
+import { useAppSelector } from "./redux/store/hooks";
+import { selectTrendData } from "./redux/store/selectors";
 
 type RangeKey = "3M" | "6M" | "1Y";
 
 
-
-const ALL_TREND: TrendPoint[] = [
-  { month: "Jan", balance: 14200 },
-  { month: "Feb", balance: 15800 },
-  { month: "Mar", balance: 13900 },
-  { month: "Apr", balance: 16200 },
-  { month: "May", balance: 17100 },
-  { month: "Jun", balance: 15600 },
-  { month: "Jul", balance: 18400 },
-  { month: "Aug", balance: 19800 },
-  { month: "Sep", balance: 21200 },
-  { month: "Oct", balance: 22100 },
-  { month: "Nov", balance: 23400 },
-  { month: "Dec", balance: 24830 },
-];
-
 const RANGES: Record<RangeKey, number> = { "3M": 3, "6M": 6, "1Y": 12 };
-
-
-
-
-
 
 
 function TrendTooltip({ active , payload , label } : TrendTooltipProps) {
@@ -50,17 +25,18 @@ function TrendTooltip({ active , payload , label } : TrendTooltipProps) {
   );
 }
 
-
-
 export const MoneyTrend = () => {
   const [range, setRange] = useState<RangeKey>("3M");
 
-  const trendData = ALL_TREND.slice(-RANGES[range]);
+const fullData = useAppSelector(selectTrendData).slice(0 , 12);
+
+
+const trendData = fullData.slice(-RANGES[range]);
 
   return (
     
-      <div style={styles.section}>
-        <div style={styles.sectionHeader}>
+      <div  className="bg-white dark:bg-zinc-900 text-black dark:text-white" style={styles.section}>
+        <div className="bg-white dark:bg-zinc-900 text-black dark:text-white" style={styles.sectionHeader}>
           <span style={styles.sectionLabel}>Balance trend</span>
           <div style={styles.tabs}>
             {(Object.keys(RANGES) as RangeKey[]).map((r) => (
@@ -88,7 +64,7 @@ export const MoneyTrend = () => {
               tick={{ fill: "#9aaa9a", fontSize: 11 }} />
             <YAxis axisLine={false} tickLine={false}
               tick={{ fill: "#9aaa9a", fontSize: 11 }}
-              tickFormatter={(v: number) => "$" + v / 1000 + "k"} />
+              tickFormatter={(v: number) => "Rs " + v / 1000 + "k"} />
             <Tooltip
               content={<TrendTooltip />}
               cursor={{ stroke: "#2d7a4f", strokeWidth: 1, strokeDasharray: "4 4" }}
