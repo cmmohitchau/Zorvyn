@@ -12,7 +12,6 @@ export const DropDown = ({ options , seTOption , Option}: DropDownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-      // remove seTOption(title) from here entirely
       const handleClickOutside = (e: MouseEvent) => {
           if (!dropdownRef.current?.contains(e.target as Node)) {
               setOpen(false);
@@ -24,7 +23,7 @@ export const DropDown = ({ options , seTOption , Option}: DropDownProps) => {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="bg-white dark:bg-zinc-900 text-black dark:text-white relative inline-block text-left">
+    <div ref={dropdownRef} className=" dark:bg-zinc-900 text-black dark:text-white relative inline-block text-left">
 
       <button
         onClick={() => setOpen((prev) => !prev)}

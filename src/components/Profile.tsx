@@ -13,9 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar , AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
+import { useAppDispatch } from "../redux/store/hooks";
 import { setRole } from "../redux/slices/roleSlice";
-import type { RootState } from "../redux/store/store";
 
 interface ProfileProps {
   username : String;

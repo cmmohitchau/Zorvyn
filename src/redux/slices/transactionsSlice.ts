@@ -1,25 +1,5 @@
 import { createSlice ,type PayloadAction } from "@reduxjs/toolkit";
-import { type Period, type Transaction } from "@/Types/TransactionType";
-
-
-type filterType = "All Time" | "Today" | "This Week" | "This Month" | "This Year";
-
-export type MonthsFull =
-  | "Jan"
-  | "Feb"
-  | "Mar"
-  | "Apr"
-  | "May"
-  | "Jun"
-  | "Jul"
-  | "Aug"
-  | "Sep"
-  | "Oct"
-  | "Nov"
-  | "Dec"
-  | "This Year";
-
-export type sortType = "date" | "category" | "transaction" | "amount" | "type" | "action"; 
+import { type filterType, type MonthsFull, type Period, type sortType, type Transaction } from "@/Types/TransactionType";
 
 interface TransactionState {
     list : Transaction[];
@@ -70,7 +50,8 @@ const SEED_TRANSACTIONS: Transaction[] = [
   { id: "t24", title: "Gifts", amount: 1500, type: "Expense", category: "Shopping", date: "2026-12-25" },
 ];
 
-const initialState: TransactionState = {
+
+const basestate: TransactionState = {
     list : SEED_TRANSACTIONS,
     period: "Monthly",
     filter: "All Time",
@@ -78,6 +59,20 @@ const initialState: TransactionState = {
     sortOrder: false,
     selectedMonth: "Jan"
 }
+
+const loadState = (): TransactionState => {
+  try {
+    const serializedState = localStorage.getItem("transactionsState");
+    if (!serializedState) return basestate;
+    return JSON.parse(serializedState);
+  } catch (e) {
+    console.warn("Failed to load state", e);
+    return initialState;
+  }
+};
+
+
+const initialState: TransactionState = loadState() || basestate;
 
 const transactionsSlice = createSlice({
     name : "transactions",
@@ -88,6 +83,7 @@ const transactionsSlice = createSlice({
                 ...action.payload,
                 id: "t_" + Date.now(),
             });
+            
         },
         deleteTransaction: (state , action : PayloadAction<string>) => {
             state.list = state.list.filter( t => t.id != action.payload);
@@ -128,3 +124,18 @@ export const {
 } = transactionsSlice.actions;
 
 export default transactionsSlice.reducer;
+
+export type IncomeType = {
+    time : string;
+    income : Number;
+    earned : Number; 
+    salary : Number;
+    Business : Number;
+    Investment : Number;
+}
+
+export const MONTHS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  "This Year"
+];

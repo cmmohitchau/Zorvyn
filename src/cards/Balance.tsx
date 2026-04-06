@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from "@/redux/store/hooks";
-import { setMonthType, type MonthsFull } from "@/redux/slices/transactionsSlice";
+import { MONTHS, setMonthType } from "@/redux/slices/transactionsSlice";
 import type { RootState } from "@/redux/store/store";
 import { DropDown } from "@/components/ui-comonents/DropDown";
-import { MONTHS } from "./Income";
 import { selectSummary } from "@/redux/store/selectors";
+import type { MonthsFull } from "@/Types/TransactionType";
 
 
 export const Balance = () => {

@@ -1,23 +1,11 @@
-import { setMonthType, type MonthsFull } from "@/redux/slices/transactionsSlice";
+import { MONTHS, setMonthType, type IncomeType } from "@/redux/slices/transactionsSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store/hooks";
 import { selectSummary } from "@/redux/store/selectors";
 import type { RootState } from "@/redux/store/store";
 import { DropDown } from "@/components/ui-comonents/DropDown";
+import type { MonthsFull } from "@/Types/TransactionType";
 
-type IncomeType = {
-    time : string;
-    income : Number;
-    earned : Number; 
-    salary : Number;
-    Business : Number;
-    Investment : Number;
-}
 
-export const MONTHS = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-  "This Year"
-];
 
 export const Income = ({earned , salary , Business , Investment} : IncomeType) => {
     const dispatch = useAppDispatch()

@@ -5,10 +5,8 @@ import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
 import { selectRole, selectSortedTransactions } from "../redux/store/selectors";
 import { deleteTransaction, setFilterType, setSortBy, setSortOrder, updateTransaction } from "@/redux/slices/transactionsSlice";
 import type { RootState } from "../redux/store/store";
-import type { Transaction as TxType } from "@/Types/TransactionType";
+import type { sortType, Transaction as TxType } from "@/Types/TransactionType";
 import { useState } from "react";
-
-type SortField = "date" | "category" | "transaction" | "amount" | "type" | "action";
 
 const Days = ["All Time", "Today", "This Week", "This Month", "This Year"];
 
@@ -72,7 +70,7 @@ export const Transaction = () => {
     const sorting   = useAppSelector((s: RootState) => s.transactions.sortBy);
     const sortOrder = useAppSelector((s: RootState) => s.transactions.sortOrder);
 
-    const handleSort = (field: SortField) => {
+    const handleSort = (field: sortType) => {
         if (sorting === field) {
             dispatch(setSortOrder(!sortOrder));
         } else {
@@ -81,7 +79,7 @@ export const Transaction = () => {
         }
     };
 
-    const columns: { label: string; field: SortField; align?: string }[] = [
+    const columns: { label: string; field: sortType; align?: string }[] = [
         { label: "Category",    field: "category" },
         { label: "Date",        field: "date" },
         { label: "Transaction", field: "transaction" },

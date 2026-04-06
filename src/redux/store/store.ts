@@ -1,16 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-import accountsReducer from "../slices/accountsSlice";
-import transactionsReducer from "../slices/transactionsSlice"
-import roleReducer from "../slices/roleSlice";
-import analyticsReducer  from "../slices/analyticsSlice"
-import uiReducer from "../slices/uiSlice";
+import transactionsReducer from "@/redux/slices/transactionsSlice"
+import roleReducer from "@/redux/slices/roleSlice";
+
 
 export const store = configureStore({
   reducer: {
     transactions: transactionsReducer,
     roles : roleReducer,
+  }
+});
 
-
+store.subscribe(() => {
+  try {
+    const state = store.getState().transactions;
+    localStorage.setItem("transactionsState", JSON.stringify(state));
+  } catch (e) {
+    console.warn("Failed to save state", e);
   }
 });
 

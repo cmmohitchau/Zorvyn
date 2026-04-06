@@ -1,17 +1,12 @@
 import { useAppDispatch, useAppSelector } from "@/redux/store/hooks";
 import type { RootState } from "@/redux/store/store";
 import { DropDown } from "@/components/ui-comonents/DropDown";
-import { MONTHS } from "./Income";
-import type { MonthsFull } from "@/redux/slices/transactionsSlice";
-import { setMonthType } from "@/redux/slices/transactionsSlice"
+
+import { MONTHS, setMonthType } from "@/redux/slices/transactionsSlice"
 import { selectSummary } from "@/redux/store/selectors";
+import type { MonthsFull } from "@/Types/TransactionType";
 
 
-type expenseType = {
-    expense : number;
-    earned : number;
-    income : number;
-}
 export const Expenses = () => {
     const dispatch = useAppDispatch();
 

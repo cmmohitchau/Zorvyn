@@ -59,7 +59,7 @@ export const ManageTransaction = () => {
 
     return(
         <div className="bg-white dark:bg-zinc-900 text-black dark:text-white">
-            <div className="p-2 flex border-b items-center justify-end mr-2">
+            <div className="p-2 flex border-b gap-2 items-center justify-end mr-2">
                 
                    <span className="font-semibold">Select Role</span>
                     <DropDown
