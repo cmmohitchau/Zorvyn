@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+### Setup Instruction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Clone the repo(or fork https://github.com/cmmohitchau/Zorvyn)
 
-Currently, two official plugins are available:
+    ```sh
+    git clone https://github.com/cmmohitchau/Zorvyn
+    ```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+2. Go to the project folder
 
-## React Compiler
+   ```sh
+   cd zorvyn-assignment
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Install packages with npm
 
-## Expanding the ESLint configuration
+   ```sh
+   npm install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+4. Run the project in development mode
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+   ```sh
+   npm run dev
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Overview Approach
+The application is built using a component-based architecture in React + TypeScript + Vite  for fast development.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- State management is handled using Redux for - predictable data flow.
+- Charts are implemented using Recharts for responsive data visualization.
+- UI styling is done using Tailwind CSS with support for dark mode.
+- The layout is divided into reusable components such as Sidebar, Cards, and Charts.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The focus was on:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Clean separation of concerns
+- Reusability of components
+- Performance and responsiveness
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+### Features
+- Summary for Income , Expense and Balance according to the months and Year.
+- Balance Trend for the visualization of the balance across months.
+- Spending Breaksown for visualization of the spending through categories and also sorted in descending order based on the spending.
+- Bar Chart to visualize the comparison between income and expense.
+- Transaction table to see, update and delete the transactions.
+- RBAC implemented. Only admin can add , edit or delete the transactions.
+- Sorting and filtering are implemented on the transaction table.
+- Can switch between admin and viewer.
+- Sidebar navigation for easy access(via react-router-dom).
+- Dark mode is implemented for the eye protection.
+- Responsive design for different screen sizes.
+- Tooltip insights on hover.
