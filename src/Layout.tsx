@@ -1,4 +1,3 @@
-import { type ReactNode } from "react"
 import { SidebarInset, SidebarProvider } from "./components/ui/sidebar"
 import { AppSidebar } from "./components/app-sidebar"
 import { Header } from "./components/Header"
